@@ -16,6 +16,14 @@ module.exports = (sequelize, DataTypes) => {
         },
         as: 'answers',
       });
+
+      Questionnaire.hasMany(models.UserQuestionnare, {
+        foreignKey: {
+          name: 'questionnaire_id',
+          allowNull: false,
+        },
+        as: 'user_answers',
+      });
     }
   }
   Questionnaire.init(

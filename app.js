@@ -12,8 +12,10 @@ const internshipRouter = require('./src/routes/v1/internship');
 const userInternshipRouter = require('./src/routes/v1/user-internship');
 const surveyRouter = require('./src/routes/v1/survey');
 const answerSurveyRouter = require('./src/routes/v1/answer-survey');
+const userSurveyRouter = require('./src/routes/v1/user-survey');
 const kusionerRouter = require('./src/routes/v1/questionare');
 const answerKuisionerRouter = require('./src/routes/v1/answer-questionare');
+const userKuisionerRouter = require('./src/routes/v1/user-questionare');
 const app = express();
 
 // view engine setup
@@ -36,6 +38,8 @@ app.use('/api/v1/survey', surveyRouter);
 app.use('/api/v1/answer-survey', answerSurveyRouter);
 app.use('/api/v1/kuisioner', kusionerRouter);
 app.use('/api/v1/answer-kuisioner', answerKuisionerRouter);
+app.use('/api/v1/user-kuisioner', userKuisionerRouter);
+app.use('/api/v1/user-survey', userSurveyRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

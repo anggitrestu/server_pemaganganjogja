@@ -41,7 +41,22 @@ module.exports = async (req, res) => {
         data: null,
       });
     }
-    console.log(check);
+
+    const checkRegulation = await Regulation.findOne({
+      where: {
+        internship_id: req.body.internship_id,
+      },
+    });
+
+    if (checkRegulation) {
+      return res.status(406).json({
+        meta: {
+          status: 'error',
+          message: 'regulation for this internship was creted',
+        },
+        data: null,
+      });
+    }
 
     const regulation = await Regulation.create(req.body);
 

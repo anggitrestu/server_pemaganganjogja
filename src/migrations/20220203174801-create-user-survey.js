@@ -18,7 +18,7 @@ module.exports = {
         references: {
           model: 'Surveys',
           key: 'id',
-          as: 'survei_id',
+          as: 'survey_id',
         },
       },
       answer: {
