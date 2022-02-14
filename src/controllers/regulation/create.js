@@ -29,7 +29,7 @@ module.exports = async (req, res) => {
     console.log(req.body);
     const internhsip = await Internship.findOne({
       where: {
-        id: 1,
+        id: req.body.internship_id,
       },
     });
     if (!internhsip) {

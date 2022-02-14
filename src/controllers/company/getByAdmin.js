@@ -1,34 +1,28 @@
-const { Company, Internship } = require('../../models');
+const { Company, Internship, Regulation } = require('../../models');
 
 module.exports = async (req, res) => {
   try {
-    const id = req.params.id;
     const company = await Company.findOne({
       where: {
-        id: id,
+        admin_id: req.admin.data.id,
       },
       attributes: {
-        exclude: [
-          'createdAt',
-          'updatedAt',
-          'deletedAt',
-          'number',
-          'email',
-          'admin_id',
-        ],
+        exclude: ['createdAt', 'updatedAt', 'deletedAt'],
       },
       include: [
         {
           model: Internship,
           as: 'internships',
           attributes: {
-            exclude: ['createdAt', 'updatedAt', 'deletedAt', 'company_id'],
+            exclude: ['createdAt', 'updatedAt', 'deletedAt'],
           },
           include: [
             {
-              model: Company,
-              as: 'company',
-              attributes: ['name'],
+              model: Regulation,
+              as: 'regulation',
+              attributes: {
+                exclude: ['createdAt', 'updatedAt', 'deletedAt'],
+              },
             },
           ],
         },
@@ -38,7 +32,7 @@ module.exports = async (req, res) => {
     return res.json({
       meta: {
         status: 'success',
-        message: 'succes get detail company',
+        message: 'succes get my company',
       },
       data: company,
     });

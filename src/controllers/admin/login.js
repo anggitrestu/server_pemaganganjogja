@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
       return res.status(404).json({
         meta: {
           status: 'error',
-          message: 'admin not found',
+          message: 'admin not found, please register first',
         },
         data: null,
       });
@@ -64,7 +64,7 @@ module.exports = async (req, res) => {
     return res.json({
       meta: {
         status: 'success',
-        message: 'succes get admin',
+        message: 'login successfully',
       },
       data: {
         token: token,

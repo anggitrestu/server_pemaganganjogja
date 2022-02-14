@@ -17,11 +17,11 @@ const kusionerRouter = require('./src/routes/v1/questionare');
 const answerKuisionerRouter = require('./src/routes/v1/answer-questionare');
 const userKuisionerRouter = require('./src/routes/v1/user-questionare');
 const app = express();
-
+var cors = require('cors');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

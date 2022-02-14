@@ -4,6 +4,7 @@ const getAll = require('./getAll');
 const getName = require('./getName');
 const update = require('./update');
 const destroy = require('./destroy');
+const getByAdmin = require('./getByAdmin');
 
 module.exports = {
   destroy,
@@ -12,4 +13,5 @@ module.exports = {
   getOne,
   getName,
   getAll,
+  getByAdmin,
 };
