@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
         {
           model: Company,
           as: 'company',
-          attributes: ['name'],
+          attributes: ['name', 'type_of_business'],
         },
       ],
     });

@@ -6,6 +6,9 @@ module.exports = async (req, res) => {
       where: {
         id: req.admin.data.id,
       },
+      attributes: {
+        exclude: ['createdAt', 'updatedAt', 'deletedAt', 'password', 'role'],
+      },
       include: [
         {
           model: Company,
@@ -14,12 +17,6 @@ module.exports = async (req, res) => {
       ],
     });
 
-    // const data = {
-    //   name: admin.name,
-    //   email: admin.email,
-    //   role: admin.role,
-    //   comp
-    // };
     console.log(admin);
     return res.json({
       meta: {

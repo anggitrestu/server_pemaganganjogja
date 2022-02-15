@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   UserSurvey.init(
     {
       user_id: DataTypes.INTEGER,
+      user_id_hl: DataTypes.INTEGER,
       survey_id: DataTypes.INTEGER,
       answer: DataTypes.STRING,
     },

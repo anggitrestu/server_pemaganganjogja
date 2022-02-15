@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
           {
             model: Company,
             as: 'company',
-            attributes: ['name'],
+            attributes: ['name', 'type_of_business'],
             where: {
               name: {
                 [Op.substring]: query,
@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
           {
             model: Company,
             as: 'company',
-            attributes: ['name'],
+            attributes: ['name', 'type_of_business'],
           },
         ],
       });

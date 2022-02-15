@@ -12,6 +12,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      user_id_hl: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       questionnaire_id: {
         type: Sequelize.INTEGER,
         allowNull: false,

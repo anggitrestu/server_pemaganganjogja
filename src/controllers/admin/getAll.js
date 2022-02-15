@@ -11,11 +11,6 @@ module.exports = async (req, res) => {
       ],
     });
 
-    const data = {
-      name: admin.name,
-      email: admin.email,
-      role: admin.role,
-    };
     console.log(admin);
     return res.json({
       meta: {

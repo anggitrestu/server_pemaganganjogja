@@ -1,56 +1,51 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Companies', {
+    await queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      admin_id: {
+      user_id_hl: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Admins',
-          key: 'id',
-          as: 'admin_id',
-        },
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      url_profile: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      url_file: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      email: {
-        allowNull: false,
-        type: Sequelize.STRING,
-        validate: {
-          isEmail: true,
-        },
-      },
-      address: {
-        allowNull: false,
+      fullname: {
         type: Sequelize.STRING,
       },
-      number: {
+      province: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
-      type_of_business: {
+      city: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
-      number_of_employee: {
+      marital_status: {
         type: Sequelize.STRING,
-        allowNull: false,
+      },
+      about_you: {
+        type: Sequelize.STRING,
+      },
+      work_experience: {
+        type: Sequelize.STRING,
+      },
+      educational_background: {
+        type: Sequelize.STRING,
+      },
+      start_date: {
+        type: Sequelize.DATE,
+      },
+      end_date: {
+        type: Sequelize.DATE,
+      },
+      name_edu: {
+        type: Sequelize.STRING,
+      },
+      level_edu: {
+        type: Sequelize.STRING,
+      },
+      major_edu: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
@@ -60,13 +55,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      deletedAt: {
-        allowNull: true,
-        type: Sequelize.DATE,
-      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Companies');
+    await queryInterface.dropTable('Users');
   },
 };

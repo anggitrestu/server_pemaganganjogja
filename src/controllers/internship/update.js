@@ -7,8 +7,10 @@ module.exports = async (req, res) => {
     const schema = {
       company_id: 'number|optional|integer|positive|empty:false',
       name_program: 'string|empty:false',
-      quota: 'number|empty:false',
-      industrial_field: 'string|empty:false',
+      location: 'string|empty:false',
+      condition: 'string|empty:false',
+      job_desc: 'string|empty:false',
+      disability: 'string',
     };
 
     const compile = v.compile(schema);
@@ -37,8 +39,10 @@ module.exports = async (req, res) => {
     const data = {
       company_id: req.body.company_id,
       name_program: req.body.name_program,
-      quota: req.body.quota,
-      industrial_field: req.body.industrial_field,
+      location: req.body.location,
+      condition: req.body.condition,
+      job_desc: req.body.job_desc,
+      disability: req.body.disability,
     };
     const updateCompany = await internship.update(data);
     return res.json({
