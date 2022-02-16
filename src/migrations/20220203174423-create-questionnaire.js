@@ -13,9 +13,8 @@ module.exports = {
         allowNull: false,
       },
       type: {
-        type: Sequelize.ENUM,
+        type: Sequelize.STRING,
         allowNull: false,
-        values: ['radio-button', 'checkbox', 'textarea'],
       },
       createdAt: {
         allowNull: false,
