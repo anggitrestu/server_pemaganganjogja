@@ -1,5 +1,5 @@
 FROM node:14.15.0
-RUN npm install --global yarn
+RUN npm install yarn
 
 WORKDIR ./
 COPY package.json .
