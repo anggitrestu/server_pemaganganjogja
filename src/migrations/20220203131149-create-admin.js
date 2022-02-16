@@ -12,6 +12,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      position: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      number: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -27,8 +35,8 @@ module.exports = {
       role: {
         allowNull: false,
         type: Sequelize.ENUM,
-        values: ['admin', 'hrd'],
-        defaultValue: 'hrd',
+        values: ['super-admin', 'admin-company'],
+        defaultValue: 'admin-company',
       },
       createdAt: {
         allowNull: false,

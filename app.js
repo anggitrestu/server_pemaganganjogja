@@ -1,3 +1,4 @@
+require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -5,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./src/routes/v1/index');
+const authRouter = require('./src/routes/v1/auth');
 const adminRouter = require('./src/routes/v1/admin');
 const companyRouter = require('./src/routes/v1/company');
 const regulationRouter = require('./src/routes/v1/regulation');
@@ -30,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1/', indexRouter);
 app.use('/api/v1/admin', adminRouter);
+app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/company', companyRouter);
 app.use('/api/v1/regulation', regulationRouter);
 app.use('/api/v1/internship', internshipRouter);

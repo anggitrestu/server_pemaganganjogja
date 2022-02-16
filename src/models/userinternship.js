@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   UserInternship.init(
     {
       user_id: DataTypes.INTEGER,
+      user_id_hl: DataTypes.INTEGER,
       internship_id: DataTypes.INTEGER,
     },
     {

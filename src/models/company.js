@@ -30,14 +30,13 @@ module.exports = (sequelize, DataTypes) => {
     {
       admin_id: DataTypes.INTEGER,
       name: DataTypes.STRING,
+      url_profile: DataTypes.STRING,
+      url_file: DataTypes.STRING,
       email: DataTypes.STRING,
       address: DataTypes.STRING,
       number: DataTypes.STRING,
-      website: DataTypes.STRING,
       type_of_business: DataTypes.STRING,
-      number_of_employee: DataTypes.INTEGER,
-      room_available: DataTypes.BOOLEAN,
-      instructor_available: DataTypes.BOOLEAN,
+      number_of_employee: DataTypes.STRING,
     },
     {
       sequelize,

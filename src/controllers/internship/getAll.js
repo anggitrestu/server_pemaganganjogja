@@ -3,21 +3,27 @@ const { Internship, Company } = require('../../models');
 
 module.exports = async (req, res) => {
   try {
-    const query = req.query.company;
+    const nameCompany = req.query.company;
+    const nameInternship = req.query.name;
     let internships = null;
-    if (query) {
+    if (nameCompany || nameInternship) {
       internships = await Internship.findAll({
         attributes: {
           exclude: ['createdAt', 'updatedAt', 'deletedAt'],
+        },
+        where: {
+          name_program: {
+            [Op.substring]: nameInternship,
+          },
         },
         include: [
           {
             model: Company,
             as: 'company',
-            attributes: ['name'],
+            attributes: ['name', 'type_of_business'],
             where: {
               name: {
-                [Op.substring]: query,
+                [Op.substring]: nameCompany,
               },
             },
           },
@@ -32,7 +38,7 @@ module.exports = async (req, res) => {
           {
             model: Company,
             as: 'company',
-            attributes: ['name'],
+            attributes: ['name', 'type_of_business'],
           },
         ],
       });

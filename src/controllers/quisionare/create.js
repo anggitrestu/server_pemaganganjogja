@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
       question: 'string|empty:false',
       type: {
         type: 'string',
-        enum: ['radio-button', 'checkbox', 'textarea'],
+        enum: ['radio-button', 'checkbox', 'textarea', 'date', 'select'],
       },
     };
 

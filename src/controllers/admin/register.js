@@ -7,6 +7,8 @@ module.exports = async (req, res) => {
   try {
     const schema = {
       name: 'string|empty:false',
+      position: 'string|empty:false',
+      number: 'string|empty:false',
       email: 'email|empty:false',
       password: 'string|min:6',
     };
@@ -44,6 +46,8 @@ module.exports = async (req, res) => {
     const data = {
       name: req.body.name,
       email: req.body.email,
+      position: req.body.position,
+      number: req.body.number,
       password,
     };
 
