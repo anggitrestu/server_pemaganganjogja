@@ -15,7 +15,7 @@ services:
           - pj
 
 
-    app:
+    pj_app:
       container_name: pj_app
       depends_on:
         - mysqldb
@@ -35,6 +35,28 @@ services:
       tty: true
       networks:
         - pj
+
+    nginx:
+      container_name: nginx
+      restart: unless-stopped
+      image: nginx
+      ports:
+        - 80:80
+        - 443:443
+      volumes:
+        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        - ./certbot/conf:/etc/letsencrypt
+        - ./certbot/www:/var/www/certbotSalinan
+      networks:
+        - pj
+
+    certbot:
+      image: certbot/certbot
+      container_name: certbot
+      volumes:
+        - ./certbot/conf:/etc/letsencrypt
+        - ./certbot/www:/var/www/certbot
+      command: certonly --webroot -w /var/www/certbot --force-renewal --email bayutri@gmail.com -d bayutri.me  --agree-tos 
 
 
 
