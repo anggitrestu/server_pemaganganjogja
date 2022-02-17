@@ -1,6 +1,35 @@
 version: '3.6'
 
-services: 
+services:
+    nginx:
+      build: ./nginx
+      image: devcomanda/nginx
+      env_file:
+        - ./config.env
+      volumes:
+        - devcomanda_nginx_ssl:/etc/nginx/ssl
+        - devcomanda_certbot_certs:/etc/letsencrypt
+        - test1_devcomanda_com_certbot:/var/www/certbot/test1.devcomanda.com
+        - test2_devcomanda_com_certbot:/var/www/certbot/test2.devcomanda.com
+        - ./html:/var/www/html/test1.devcomanda.com
+        - ./html:/var/www/html/test2.devcomanda.com
+      ports:
+        - "80:80"
+        - "443:443"
+      restart: always
+
+    certbot:
+      build: ./certbot
+      image: devcomanda/certbot
+      env_file:
+        - ./config.env
+      volumes:
+        - devcomanda_certbot_certs:/etc/letsencrypt
+        - test1_devcomanda_com_certbot:/var/www/certbot/test1.devcomanda.com
+        - test2_devcomanda_com_certbot:/var/www/certbot/test2.devcomanda.com
+      depends_on:
+        - nginx
+
     mysqldb:
       container_name: pj_mysqldb
       image: mysql:8.0
@@ -14,16 +43,15 @@ services:
       networks:
           - pj
 
-
     app:
       container_name: pj_app
       depends_on:
         - mysqldb
+        - nginx
+        - certbot
       build: ./
       restart: unless-stopped
       env_file: ./.env
-      ports:
-        - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
       environment:
         - DB_NAME=$MYSQLDB_DATABASE
         - DB_HOST=$MYSQLDB_HOST
@@ -32,11 +60,20 @@ services:
         - DB_PORT=$MYSQLDB_DOCKER_PORT
         - DB_DIALECT=mysql
       stdin_open: true
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
       tty: true
       networks:
         - pj
 
 
+volumes:
+  devcomanda_nginx_ssl:
+    external: true
+  devcomanda_certbot_certs:
+    external: true
+  test1_devcomanda_com_certbot:
+  test2_devcomanda_com_certbot:
 
 networks:
   pj:
