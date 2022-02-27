@@ -13,30 +13,6 @@ services:
           - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
       networks:
           - pj
-
-    nginx:
-      container_name: nginx
-      restart: unless-stopped
-      image: nginx
-      ports:
-        - 80:80
-        - 443:443
-      volumes:
-        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-        - ./certbot/conf:/etc/letsencrypt
-        - ./certbot/www:/var/www/certbot
-      networks:
-        - pj
-
-    certbot:
-      image: certbot/certbot
-      container_name: certbot
-      volumes: 
-        - ./certbot/conf:/etc/letsencrypt
-        - ./certbot/www:/var/www/certbot
-      command: certonly --webroot -w /var/www/certbot --force-renewal --email rizky@yahoo.com -d rizkysr.space --agree-tos
-      networks:
-        - pj
         
     pj_app:
       container_name: pj_app
