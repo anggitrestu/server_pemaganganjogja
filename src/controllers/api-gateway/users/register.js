@@ -4,6 +4,7 @@ const api = apiAdapter(URL_SERVICE_HACKLAB);
 
 module.exports = async (req, res) => {
   try {
+    console.log(req.body);
     const user = await api.post('/auth/register', req.body);
     return res.status(200).json(user.data);
   } catch (error) {

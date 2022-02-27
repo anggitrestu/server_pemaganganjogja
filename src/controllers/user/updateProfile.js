@@ -4,6 +4,7 @@ const v = new Validator();
 
 module.exports = async (req, res) => {
   try {
+    console.log(req.body);
     const schema = {
       user_id_hl: 'number|optional|integer|positive|empty:false',
       fullname: 'string|empty:false',
