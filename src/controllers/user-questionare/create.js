@@ -6,6 +6,7 @@ module.exports = async (req, res) => {
   try {
     const schema = {
       user_id: 'number|integer|positive|empty:false',
+      user_id_hl: 'number|integer|positive|empty:false',
       questionnaire_id: 'number|integer|positive|empty:false',
       answer: 'string|empty:false',
     };

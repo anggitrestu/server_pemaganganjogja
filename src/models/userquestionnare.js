@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   UserQuestionnare.init(
     {
       user_id: DataTypes.INTEGER,
+      user_id_hl: DataTypes.INTEGER,
       questionnaire_id: DataTypes.INTEGER,
       answer: DataTypes.STRING,
     },

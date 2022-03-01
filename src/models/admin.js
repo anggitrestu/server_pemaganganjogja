@@ -18,12 +18,15 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
+
   Admin.init(
     {
       name: DataTypes.STRING,
       email: DataTypes.STRING,
+      position: DataTypes.STRING,
+      number: DataTypes.STRING,
       password: DataTypes.STRING,
-      role: DataTypes.ENUM(['admin', 'hrd']),
+      role: DataTypes.ENUM(['super-admin', 'admin-company']),
     },
     {
       sequelize,

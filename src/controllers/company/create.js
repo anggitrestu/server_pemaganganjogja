@@ -7,14 +7,13 @@ module.exports = async (req, res) => {
     const schema = {
       admin_id: 'number|optional|integer|positive|empty:false',
       name: 'string|empty:false',
+      url_profile: 'string',
+      url_file: 'string',
       email: 'email|empty:false',
       address: 'string|empty:false',
       number: 'string|empty:false',
-      website: 'string',
       type_of_business: 'string|empty:false',
-      number_of_employee: 'number|empty:false',
-      room_available: 'boolean|empty:false',
-      instructor_available: 'boolean|empty:false',
+      number_of_employee: 'string|empty:false',
     };
 
     const compile = v.compile(schema);

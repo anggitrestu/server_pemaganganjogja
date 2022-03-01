@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
   Survey.init(
     {
       question: DataTypes.STRING,
-      type: DataTypes.ENUM(['radio-button', 'checkbox', 'textarea']),
+      type: DataTypes.STRING,
     },
     {
       sequelize,

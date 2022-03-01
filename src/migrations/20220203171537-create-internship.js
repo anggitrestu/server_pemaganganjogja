@@ -21,11 +21,19 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      quota: {
-        type: Sequelize.INTEGER,
+      location: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      industrial_field: {
+      condition: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      job_desc: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      disability: {
         type: Sequelize.STRING,
         allowNull: false,
       },

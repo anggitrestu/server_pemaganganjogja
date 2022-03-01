@@ -30,8 +30,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       company_id: DataTypes.INTEGER,
       name_program: DataTypes.STRING,
-      quota: DataTypes.INTEGER,
-      industrial_field: DataTypes.STRING,
+      location: DataTypes.STRING,
+      condition: DataTypes.STRING,
+      job_desc: DataTypes.STRING,
+      disability: DataTypes.STRING,
     },
     {
       sequelize,
