@@ -13,7 +13,9 @@ module.exports = async (req, res) => {
         .status(500)
         .json({ status: 'error', message: 'service unavailable' });
     }
-    res.status(400);
-    res.json(error.response.data);
+    if (error.response.data) {
+      return res.status(400).json(error.response.data);
+    }
+    return res.status(400).json(error);
   }
 };

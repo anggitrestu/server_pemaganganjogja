@@ -18,6 +18,10 @@ const userSurveyRouter = require('./src/routes/v1/user-survey');
 const kusionerRouter = require('./src/routes/v1/questionare');
 const answerKuisionerRouter = require('./src/routes/v1/answer-questionare');
 const userKuisionerRouter = require('./src/routes/v1/user-questionare');
+const nDate = new Date().toLocaleString('en-US', {
+  timeZone: 'Asia/Bangkok',
+});
+console.log(nDate);
 const app = express();
 var cors = require('cors');
 // view engine setup

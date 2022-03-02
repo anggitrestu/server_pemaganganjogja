@@ -17,6 +17,8 @@ module.exports = async (req, res) => {
       name_edu: 'string|empty:false',
       level_edu: 'string|empty:false',
       major_edu: 'string|empty:false',
+      email: 'string|empty:false',
+      phone_number: 'string|empty:false',
     };
 
     const compile = v.compile(schema);
