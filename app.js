@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./src/routes/v1/index');
+const userRouter = require('./src/routes/v1/users');
 const authRouter = require('./src/routes/v1/auth');
 const adminRouter = require('./src/routes/v1/admin');
 const companyRouter = require('./src/routes/v1/company');
@@ -35,6 +36,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1/', indexRouter);
+app.use('/api/v1/user', userRouter);
 app.use('/api/v1/admin', adminRouter);
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/company', companyRouter);
