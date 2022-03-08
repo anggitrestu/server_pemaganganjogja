@@ -17,6 +17,14 @@ module.exports = (sequelize, DataTypes) => {
         as: 'regulation',
       });
 
+      Internship.hasMany(models.UserInternship, {
+        foreignKey: {
+          name: 'internship_id',
+          allowNull: false,
+        },
+        as: 'user_internships',
+      });
+
       Internship.belongsTo(models.Company, {
         foreignKey: {
           name: 'company_id',
