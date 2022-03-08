@@ -5,6 +5,7 @@ const getName = require('./getName');
 const update = require('./update');
 const destroy = require('./destroy');
 const getByAdmin = require('./getByAdmin');
+const getApplicantInternshipByAdmin = require('./getApplicantInternshipByAdmin');
 
 module.exports = {
   destroy,
@@ -14,4 +15,5 @@ module.exports = {
   getName,
   getAll,
   getByAdmin,
+  getApplicantInternshipByAdmin,
 };

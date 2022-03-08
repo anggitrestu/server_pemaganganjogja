@@ -16,6 +16,14 @@ module.exports = (sequelize, DataTypes) => {
         },
         as: 'internships',
       });
+
+      UserInternship.belongsTo(models.User, {
+        foreignKey: {
+          name: 'user_id',
+          allowNull: false,
+        },
+        as: 'user',
+      });
     }
   }
   UserInternship.init(
