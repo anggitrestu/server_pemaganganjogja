@@ -19,12 +19,15 @@ const userSurveyRouter = require('./src/routes/v1/user-survey');
 const kusionerRouter = require('./src/routes/v1/questionare');
 const answerKuisionerRouter = require('./src/routes/v1/answer-questionare');
 const userKuisionerRouter = require('./src/routes/v1/user-questionare');
+const excelRouter = require('./src/routes/v1/excel');
 const nDate = new Date().toLocaleString('en-US', {
   timeZone: 'Asia/Bangkok',
 });
 console.log(nDate);
 const app = express();
 var cors = require('cors');
+global.__basedir = __dirname + '/..';
+app.use(express.urlencoded({ extended: true }));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -49,6 +52,7 @@ app.use('/api/v1/kuisioner', kusionerRouter);
 app.use('/api/v1/answer-kuisioner', answerKuisionerRouter);
 app.use('/api/v1/user-kuisioner', userKuisionerRouter);
 app.use('/api/v1/user-survey', userSurveyRouter);
+app.use('/api/v1/excel', excelRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
